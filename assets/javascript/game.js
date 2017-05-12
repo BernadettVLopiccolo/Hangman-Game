@@ -8,8 +8,8 @@ var remainGuess = 10;
 var compPick = Math.floor(Math.random() *5) + 1;
 
 //setting up an empty bucket for guesses
-var entered_guesses = {}
-
+var previous_guesses = {}
+var wordArray = new Array;
 //new var that picks a random word from words
 //print out word
 var compWords = words[compPick];
@@ -29,7 +29,7 @@ var wordsLength = blankWordsArray.length;
         document.getElementById("blanks").innerHTML += blankWordsArray[i];
        }
 
-        //problem here?
+        
         compWordsArray = compWords.split("");
         console.log("reset sport words array",compWordsArray);
 
@@ -38,20 +38,37 @@ var wordsLength = blankWordsArray.length;
             console.log("Picked key", event.key);
             var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
             document.getElementById("userGuess").innerHTML += " " + userGuess;
-           
-    
 
-            //if letter is guessed wrong, you loose a guess
+         //new addition, js nonsence   
+           //for(i = 0; i < previous_guesses.length; i++) {
+            //if(userGuess == previous_guesses[i]) {
+                //previouslyEntered = true;
+            //}
+           //}
+            //if(!previouslyEntered) {
+                //previous_guesses.push(userGuess);
+                //for (i =0; i < wordArray.length; i++) {
+                    //found = true;
+                    //document.appendChild(userGuess);
+                //}
+
+            //}
+            //if(found) 
+
+            //if letter is guessed  wrong, you loose a guess
             remainGuess--;
         //setting up max guesses to 10    
         if(remainGuess < 0) {
             remainGuess = 10;
-            }
+            if (remainGuess = 0) {
 
+            console.log("game over", remainGuess);
+              }
+            }
         //shows remaining guesses
         document.getElementById("remaining").innerHTML = remainGuess;
+             
         
-        //
        for(var l = 0; l <= wordsLength; l++) {
             blankWordsArray[i] = " _ ";
           if(userGuess === compWordsArray[l]){
@@ -72,7 +89,8 @@ var wordsLength = blankWordsArray.length;
             }
         }
 
-          if(entered_guesses == [i]) {
+
+          if(previous_guesses == blankWordsArray[i]) {
 
             words += entered_guesses;
             }
@@ -80,4 +98,6 @@ var wordsLength = blankWordsArray.length;
              words += " ";
           }
 
-    }
+        }
+        
+        
